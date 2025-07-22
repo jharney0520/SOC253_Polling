@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Crime Clearance Poll</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 2rem; max-width: 600px; margin: auto; }
+        label { display: block; margin-bottom: 1rem; }
+        button { padding: 0.5rem 1rem; font-size: 1rem; }
+    </style>
+</head>
+<body>
+    <h1>{{ poll.question }}</h1>
+    <form method="POST" action="/">
+        {% for option in poll.options %}
+            <label>
+                <input type="radio" name="option" value="{{ loop.index0 }}" required>
+                {{ option }}
+            </label>
+        {% endfor %}
+        <button type="submit">Submit Vote</button>
+    </form>
+</body>
+</html>

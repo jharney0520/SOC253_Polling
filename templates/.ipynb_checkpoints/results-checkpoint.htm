@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Poll Results</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 2rem; max-width: 600px; margin: auto; }
+        .bar { background-color: #4CAF50; height: 20px; margin-bottom: 0.5rem; }
+        .label { margin-bottom: 0.3rem; }
+    </style>
+</head>
+<body>
+    <h1>{{ poll.question }}</h1>
+    <p>Total Votes: {{ total }}</p>
+
+    {% for option, votes in zip(poll.options, poll.votes) %}
+        <div class="label">{{ option }} — {{ votes }} votes</div>
+        <div class="bar" style="width: {{ (votes / total * 100)|round(1) }}%;"></div>
+    {% endfor %}
+
+    <p><a href="/">Back to Poll</a></p>
+</body>
+</html>
